@@ -45,16 +45,16 @@ with open('LINKS.csv') as example_file:
         space = " , , , , , , \n"
         
         
-        headers = "Tanggal,High,Low,Last,Value,WAP,Deskripsi \n"
+        headers = " ,Tanggal,High,Low,Last,Value,WAP,Deskripsi \n"
         f = open(company, "a")
         # lines = example_file.readlines()
         # lines[0] = lines[0][26:]
-        f.write(space)
-        f.write(name + "\n")
+        #f.write(space)
+        #f.write(name + "\n")
         f.write(headers)
         f.close()
         with open(company, 'a') as filehandle:
-            filehandle.writelines("%s\n" % table for table in datasets)
+            filehandle.writelines(name+","+"%s\n" % table for table in datasets)
 
         # if (datasets != []):
         #   break
