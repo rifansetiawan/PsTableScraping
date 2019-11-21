@@ -23,7 +23,7 @@ url = 'https://pasardana.id/bond/ADMF03CCN2'
 
 driver = webdriver.Chrome(DRIVER, chrome_options=chrome_options)
 
-with open('LINKS.csv') as example_file:
+with open('LINKS_30_OKT.csv') as example_file:
     example_reader = csv.reader(example_file)
     for row in example_reader:
         driver.get(row[0])
@@ -41,7 +41,7 @@ with open('LINKS.csv') as example_file:
                 if word.endswith("Outright"):
                     datasets.append(isinya)
         print(*datasets, sep = "\n")
-        company = "History_Transaction.csv"
+        company = "30OKT_History_Transactions.csv"
         space = " , , , , , , \n"
         
         
@@ -54,6 +54,8 @@ with open('LINKS.csv') as example_file:
         f.write(headers)
         f.close()
         with open(company, 'a') as filehandle:
+            if datasets == [] :
+                filehandle.writelines(name  +   ","  +   "-"    +   ","   +   "-" +  ","   +   "-"  +  ","  +   "-"    +   ","   +   "-" +  ","   +   "-" + ","   +   "-" +  "\n")
             filehandle.writelines(name+","+"%s\n" % table for table in datasets)
 
         # if (datasets != []):
